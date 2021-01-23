@@ -8,12 +8,16 @@ call plug#begin(stdpath('data') . '/plugged')
 	" syntax
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'maxmellon/vim-jsx-pretty'
+	" Plug 'mxw/vim-jsx'
 
 	Plug 'mattn/emmet-vim'
 	Plug 'chun-yang/auto-pairs'
   " Langugue	
 	Plug 'pangloss/vim-javascript'
+	" Comment
+	Plug 'tpope/vim-commentary'
 call plug#end()
+
 
 syntax on
 set number
