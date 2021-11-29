@@ -24,6 +24,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
 	" Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'thaerkh/vim-indentguides'
+	
+	Plug 'preservim/tagbar'
 call plug#end()
 
 
@@ -92,6 +94,9 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " indent guide
 let g:indent_guides_ignorelist = ['text']
 let g:indent_guides_tabchar = '|'
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " JS intellisense & syyntax highlighting
 let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
