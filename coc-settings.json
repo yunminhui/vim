@@ -12,5 +12,6 @@
 	"emmet.includeLanguages": {
 		"javascript": "javascriptreact"
 	},
-	"prettier.singleQuote": true
+	"prettier.singleQuote": true,
+	"javascript.suggestionActions.enabled": false
 }
