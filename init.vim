@@ -2,18 +2,20 @@ call plug#begin(stdpath('data') . '/plugged')
 	" File Explorer
 	Plug 'preservim/nerdtree'
 	" Theme
-	Plug 'sonph/onehalf', { 'rtp': 'vim'} 
+	" Plug 'sonph/onehalf', { 'rtp': 'vim'} 
+	Plug 'nanotech/jellybeans.vim'
 	" multi cursor
   Plug 'terryma/vim-multiple-cursors'
 	" syntax
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'neoclide/coc.nvim', {'branch': 'release', 'for':'python'}
 	Plug 'maxmellon/vim-jsx-pretty'
 	" Plug 'mxw/vim-jsx'
-
+	"
 	Plug 'mattn/emmet-vim'
 	Plug 'chun-yang/auto-pairs'
   " Langugue	
 	Plug 'pangloss/vim-javascript'
+	Plug 'numirias/semshi', {'do':'UpdateRemotePlugins'}
 	" Comment
 	Plug 'tpope/vim-commentary'
 	
@@ -31,14 +33,45 @@ call plug#end()
 
 syntax on
 set number
-set foldmethod=syntax
-set foldlevelstart=99
-let javscript_fold=1
+" filetype indent plugin on
+" let python_highlight_all=1
+" let g:rainbow_active=1
+
+" folding
+set foldmethod=manual
+" set foldmethod=syntax
+" set foldlevelstart=99
+" let javscript_fold=1
+" setlocal foldmethod=indent
+" set nofoldenable
+" set foldlevel=99
+" set fillchars=fold:\ "The backslash escapes a space
+" set foldtext=CustomFoldText()
+" function! CustomFoldText()
+"   let indentation = indent(v:foldstart - 1)
+"   let foldSize = 1 + v:foldend - v:foldstart
+"   let foldSizeStr = " " . foldSize . " lines "
+"   let foldLevelStr = repeat("+--", v:foldlevel)
+"   let expansionString = repeat(" ", indentation)
+"   return expansionString . foldLevelStr . foldSizeStr
+" endfunction
 
 
 " Theme
-colorscheme onehalfdark
-set t_Co=256
+" colorscheme onehaslfdark
+" set t_Co=256
+colorscheme jellybeans
+
+
+" python sytax 보조
+" function MyCustomHighlights()
+"     hi semshiGlobal      ctermfg=red guifg=#ff0000
+" endfunction
+" autocmd FileType python call MyCustomHighlights()
+autocmd ColorScheme * call MyCustomHighlights()
+
+
+
 
 " Cursor
 set cursorline
@@ -65,6 +98,7 @@ set tabstop=2
 set shiftwidth=2
 set smarttab 
 set autoindent
+set cindent
 " Esc
 imap jk <ESC>
 
@@ -97,9 +131,11 @@ let g:indent_guides_tabchar = '|'
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_width=40
 
 " JS intellisense & syyntax highlighting
-let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',  'coc-import-cost','coc-explorer']
+
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
@@ -108,5 +144,6 @@ endif
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
+
 
 

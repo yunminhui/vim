@@ -13,5 +13,6 @@
 		"javascript": "javascriptreact"
 	},
 	"prettier.singleQuote": true,
-	"javascript.suggestionActions.enabled": false
+	"javascript.suggestionActions.enabled": false,
+	"python.jediEnabled": false
 }
