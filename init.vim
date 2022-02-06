@@ -68,7 +68,7 @@ colorscheme jellybeans
 "     hi semshiGlobal      ctermfg=red guifg=#ff0000
 " endfunction
 " autocmd FileType python call MyCustomHighlights()
-autocmd ColorScheme * call MyCustomHighlights()
+" autocmd ColorScheme * call MyCustomHighlights()
 
 
 " Cursor -------------------------------------------------------
@@ -104,10 +104,13 @@ au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 
 " airline ------------------------------------------------------
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#show_tabs = 1
 " let g:airline#extensions#tabline#formatter = 'default'
+nnoremap <silent><C-h> :bp<CR>
+nnoremap <silent><C-l> :bn<CR>
 
 
 " tagbar -------------------------------------------------------
