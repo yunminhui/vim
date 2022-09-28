@@ -1,18 +1,4 @@
 {
-  "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true,
-	"emmet.includeLanguages": {
-		"javascript": "javascriptreact"
-	},
-	"prettier.singleQuote": true,
-	"javascript.suggestionActions.enabled": false,
-	"python.jediEnabled": false
+	"langugueserver": {
+	}
 }

@@ -5,14 +5,14 @@ call plug#begin(stdpath('data') . '/plugged')
 	" Plug 'sonph/onehalf', { 'rtp': 'vim'} 
 	Plug 'nanotech/jellybeans.vim'
 	" syntax
-	Plug 'neoclide/coc.nvim', {'branch': 'release', 'for':'python'}
-	Plug 'maxmellon/vim-jsx-pretty'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Plug 'maxmellon/vim-jsx-pretty'
 	" Plug 'mxw/vim-jsx'
 	Plug 'mattn/emmet-vim'
 	Plug 'chun-yang/auto-pairs'
   " Langugue	
 	Plug 'pangloss/vim-javascript'
-	Plug 'numirias/semshi', {'do':'UpdateRemotePlugins', 'for':['python']}
+	" Plug 'numirias/semshi', {'do':'UpdateRemotePlugins', 'for':['python']}
 	" Comment
 	Plug 'tpope/vim-commentary'
 	" CSS color
@@ -22,6 +22,8 @@ call plug#begin(stdpath('data') . '/plugged')
 	Plug 'vim-airline/vim-airline-themes'	
 	
 	Plug 'preservim/tagbar'
+	" Debugging
+	Plug 'puremourning/vimspector'
 call plug#end()
 
 
@@ -32,8 +34,8 @@ set mouse=a
 
 
 " Tap ----------------------------------------------------------
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set smarttab 
 set autoindent
 set cindent
@@ -57,6 +59,8 @@ set foldmethod=manual
 "   let expansionString = repeat(" ", indentation)
 "   return expansionString . foldLevelStr . foldSizeStr
 " endfunction
+"
+
 
 
 " Theme -------------------------------------------------------
@@ -95,7 +99,7 @@ endfunction
 nnoremap <c-z> :call OpenTerminal() <CR>
 
 
-" NERDTree -----------------------------------------------------
+" NERDTree -----------------
 nnoremap <C-b> :NERDTree<CR>
 nnoremap <C-b> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=20
@@ -120,12 +124,29 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_width=40
 
 " JS intellisense & syyntax highlighting -----------------------
-let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',  'coc-import-cost','coc-explorer']
+let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver',  'coc-import-cost', 'coc-pyright', 'coc-clangd', 'coc-clojure']
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
+" if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+"   let g:coc_global_extensions += ['coc-prettier']
+" endif
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
+" if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+"   let g:coc_global_extensions += ['coc-eslint']
+" endif
+
+
+" semshi
+let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
+
+
+" Debugging
+let g:vimspector_enable_mappings = 'HUMAN'
+nmap <leader>vl :call vimspector#Launch()<CR>
+nmap <leader>vr :VimspectorReset<CR>
+nmap <leader>ve :VimspectorEval
+nmap <leader>vw :VimspectorWatch
+nmap <leader>vo :VimspectorShowOutput
+nmap <leader>vi <Plug>VimspectorBalloonEval
+xmap <leader>vi <Plug>VimspectorBalloonEval
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
+let g:vimspector_base_dir='/Users/yunminhui/.local/share/nvim/plugged/vimspector'
