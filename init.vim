@@ -136,17 +136,18 @@ let g:coc_global_extensions = ['coc-eslint', 'coc-emmet', 'coc-css', 'coc-html',
 
 
 " semshi
-let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
+" let g:python3_host_prog = substitute(system("which python3"), '\n\+$', '', '')
 
-
+let g:python3_host_prog = "/usr/bin/python3"
+	
 " Debugging
 let g:vimspector_enable_mappings = 'HUMAN'
-nmap <leader>vl :call vimspector#Launch()<CR>
-nmap <leader>vr :VimspectorReset<CR>
-nmap <leader>ve :VimspectorEval
-nmap <leader>vw :VimspectorWatch
-nmap <leader>vo :VimspectorShowOutput
-nmap <leader>vi <Plug>VimspectorBalloonEval
-xmap <leader>vi <Plug>VimspectorBalloonEval
+nmap <leader>dl :call vimspector#Launch()<CR>
+nmap <leader>dr :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
 let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
 let g:vimspector_base_dir='/Users/yunminhui/.local/share/nvim/plugged/vimspector'
